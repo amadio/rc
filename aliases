@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if ${use_color} ; then
+	alias ls='ls --color'
+	alias grep='grep --color=auto'
+	
+	type -P colordiff >/dev/null && \
+		alias diff=colordiff
+fi
+
+alias ..='cd ..'
+alias la='ls -A'
+alias lr='ls -R'
+alias lt='ls -sh'
+alias ll='ls -lGgh'
+alias l.='ls -d .[a-z,A-Z,0-9]*'
+alias man='LANG=C man'
+
+alias df='df -H'
+alias du='du -sh'
+
+alias acroread='acroread 2>/dev/null'
+
+# vim: tw=72 ts=4 sts=4 sw=4:

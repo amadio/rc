@@ -1,0 +1,2 @@
+# HFS+ filesystem is case-insensitive
+set completion-ignore-case on
