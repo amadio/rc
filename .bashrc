@@ -29,8 +29,7 @@ shopt -s histappend
 HISTCONTROL=ignoreboth:erasedups
 
 # Set history sizes to a more reasonable number
-HISTSIZE=100; HISTFILESIZE=5000
-HISTIGNORE="cd:history:ls"
+HISTSIZE=100; HISTFILESIZE=5000; HISTIGNORE="cd:history:ls"
 
 # Set a history timestamp format so that when we have multiple shells,
 # we don't forget the history of the ones that were closed first.
@@ -39,9 +38,6 @@ HISTTIMEFORMAT='%d/%m/%y %H:%M '
 # Preferred applications
 export EDITOR=vim
 type -P lesspipe >/dev/null && export LESSOPEN=${LESSOPEN:-|lesspipe %s}
-
-# Add ~/bin and current directory to PATH
-export PATH=$PATH:~/bin:.
 
 # Enable Tab- completion in Python when invoked interactively.
 export PYTHONSTARTUP=$HOME/.pythonrc
@@ -88,17 +84,18 @@ else
 fi
 
 # Load bash completion modules
-if [[ -f /etc/gentoo-release ]] ; then
-	bash_completion='/etc/profile.d/bash-completion.sh'
-else
-	bash_completion='/etc/bash_completion'	
-fi
-
+bash_completion='/etc/profile.d/bash-completion.sh'
 [ -f $bash_completion ] && source $bash_completion
 
-# Load aliases and machine-specific configuration files
-[ -f $HOME/.aliases ] && source $HOME/.aliases
+# Load machine-specific configuration files
 [ -f $HOME/.bashrc-$HOSTNAME ] && source $HOME/.bashrc-$HOSTNAME
+
+# Load generic and machine specific alias files
+[ -f $HOME/.alias ] && source $HOME/.alias
+[ -f $HOME/.alias-$HOSTNAME ] && source $HOME/.alias-$HOSTNAME
+
+# Add ~/bin and current directory to PATH
+export PATH=$PATH:~/bin:.
 
 unset bash_completion use_color safe_term match_lhs
 

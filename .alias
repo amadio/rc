@@ -19,6 +19,9 @@ alias man='LANG=C man'
 alias df='df -H'
 alias du='du -sh'
 
-alias acroread='acroread 2>/dev/null'
+# load machine specific alias file
+if [[ -f $HOME/.alias-$HOSTNAME ]]; then
+	source $HOME/.alias-$HOSTNAME
+fi
 
 # vim: tw=72 ts=4 sts=4 sw=4:
