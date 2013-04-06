@@ -14,6 +14,7 @@ nmap <leader>l :set list!<CR>
 nmap <leader>n :set number!<CR>
 nmap <leader>h :set hlsearch!<CR>
 nmap <leader>v :edit $MYVIMRC<CR>
+nmap <leader>m :!make<CR>
 
 set pastetoggle=<F5>
 nmap <leader>p :set paste!<CR>
@@ -34,7 +35,7 @@ if has("autocmd")
 	autocmd FileType c,cpp      setlocal tw=95 ts=4 sts=4 sw=4 noexpandtab
 	autocmd FileType python     setlocal tw=95 ts=4 sts=4 sw=4 noexpandtab
 	autocmd FileType fortran    setlocal tw=72 ts=6 sts=6 sw=6 expandtab
-	autocmd FileType latex      setlocal tw=95 ts=2 sts=2 sw=2 expandtab
+	autocmd FileType tex,latex  setlocal tw=95 ts=2 sts=2 sw=2 expandtab
 	autocmd FileType html,css   setlocal tw=95 ts=2 sts=2 sw=2 expandtab
 	autocmd FileType javascript setlocal tw=95 ts=4 sts=4 sw=4 noexpandtab
 
