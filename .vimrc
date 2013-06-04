@@ -30,6 +30,10 @@ map <C-l> <C-w>l
 vnoremap < <gv
 vnoremap > >gv
 
+if has("syntax")
+	hi Special term=bold cterm=bold ctermfg=red
+endif
+
 if has("autocmd")
 	autocmd FileType make       setlocal tw=95 ts=8 sts=8 sw=8 noexpandtab
 	autocmd FileType c,cpp      setlocal tw=95 ts=4 sts=4 sw=4 noexpandtab
