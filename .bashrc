@@ -12,6 +12,9 @@ fi
 
 # Shell Options
 
+# Use vi command-line editing
+set -o vi
+
 # Do not overwrite files without checking with the user.  If you need to
 # overwrite, use >| instead of just >.
 set -o noclobber
@@ -29,27 +32,30 @@ shopt -s histappend
 HISTCONTROL=ignoreboth:erasedups
 
 # Set history sizes to a more reasonable number
-HISTSIZE=100; HISTFILESIZE=5000; HISTIGNORE="cd:history:ls"
+HISTSIZE=100; HISTFILESIZE=5000; HISTIGNORE='cd:history:ls'
 
 # Set a history timestamp format so that when we have multiple shells,
 # we don't forget the history of the ones that were closed first.
 HISTTIMEFORMAT='%d/%m/%y %H:%M '
 
-# Preferred applications
+# Preferred applications and options
+
 export EDITOR=vim
+
+export LESS="$LESS -F -X"
 type -P lesspipe >/dev/null && export LESSOPEN=${LESSOPEN:-|lesspipe %s}
 
 # Enable Tab- completion in Python when invoked interactively.
 export PYTHONSTARTUP=$HOME/.pythonrc
 
-# Change the title of X terminals
+# Change window title of X terminals
 case ${TERM} in
-        xterm*|rxvt*|Eterm|aterm|kterm|gnome*|interix)
-                PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
-                ;;
-        screen)
-                PROMPT_COMMAND='echo -ne "\033_${HOSTNAME%%.*}:${PWD/#$HOME/~}\033\\"'
-                ;;
+	xterm*|rxvt*|Eterm|aterm|kterm|gnome*|interix)
+		PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
+		;;
+	screen)
+		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\033\\"'
+		;;
 esac
 
 # Decide if this terminal is capable of color output and set a colorful prompt
@@ -98,5 +104,3 @@ bash_completion='/etc/profile.d/bash-completion.sh'
 export PATH=$PATH:~/bin:.
 
 unset bash_completion use_color safe_term match_lhs
-
-# vim: tw=72 ts=4 sts=4 sw=4:
