@@ -1,20 +1,14 @@
-" Guilherme Amadio's vimrc
 
-" basic configuration
-set nocompatible
-set hidden autoindent autowrite ruler
-set background=dark
-set tw=95 ts=8 sts=8 sw=8 noexpandtab
-set suffixes=~,.bak,.swp,.o,.lo,.la,.aux,.log,.out,.dvi,.ps,.blg,.bbl
-set vb t_vb= showbreak=… listchars=tab:▸\ ,eol:¬
-set viminfo='50,\"10000 " make register size very big
+set nocp hid bg=dark ai ar aw si is ic sc lz vb t_vb= vi='50,\"10000
+set su=~,.bak,.swp,.o,.lo,.la,.aux,.log,.out,.dvi,.ps,.pdf,.blg,.bbl
+set tw=80 ts=8 sts=8 sw=8 noet sbr=… lcs=eol:¬,tab:▸\ ,trail:●,extends:…
 
-" some shortcuts
+nmap <leader>m :!make<CR>
 nmap <leader>l :set list!<CR>
 nmap <leader>n :set number!<CR>
 nmap <leader>h :set hlsearch!<CR>
 nmap <leader>v :edit $MYVIMRC<CR>
-nmap <leader>m :!make<CR>
+nmap <leader>w :set wrap! lbr!<CR>
 
 set pastetoggle=<F5>
 nmap <leader>p :set paste!<CR>
@@ -31,30 +25,34 @@ vnoremap < <gv
 vnoremap > >gv
 
 if has("syntax")
+	hi NonText    ctermfg=darkgray
+	hi SpecialKey ctermfg=darkgray
 	hi Special term=bold cterm=bold ctermfg=red
+	hi Type    term=bold cterm=bold ctermfg=green
+	hi PreProc term=bold cterm=bold ctermfg=blue
 endif
 
 if has("autocmd")
-	autocmd FileType make       setlocal tw=95 ts=8 sts=8 sw=8 noexpandtab
-	autocmd FileType c,cpp      setlocal tw=95 ts=4 sts=4 sw=4 noexpandtab
-	autocmd FileType python     setlocal tw=95 ts=4 sts=4 sw=4 noexpandtab
-	autocmd FileType fortran    setlocal tw=72 ts=6 sts=6 sw=6 expandtab
-	autocmd FileType tex,latex  setlocal tw=95 ts=2 sts=2 sw=2 expandtab
-	autocmd FileType html,css   setlocal tw=95 ts=2 sts=2 sw=2 expandtab
-	autocmd FileType javascript setlocal tw=95 ts=4 sts=4 sw=4 noexpandtab
+	autocmd FileType html,css   setlocal ts=2 sts=2 sw=2 et
+	autocmd FileType tex,latex  setlocal ts=2 sts=2 sw=2 et
+	autocmd FileType make       setlocal ts=8 sts=8 sw=8 noet
+	autocmd FileType c,cpp      setlocal ts=4 sts=4 sw=4 noet
+	autocmd FileType python     setlocal ts=4 sts=4 sw=4 noet
+	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
+	autocmd FileType fortran    setlocal tw=72 ts=8 sts=8 sw=8 noet
 
 	" automatically remove trailing whitespace for code
 	autocmd BufWritePre *.h,*.c,*.cc,*.cpp,*.py,*.f :%s/\s\+$//e
 endif
 
 function! Preserve(command)
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  execute a:command
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
+	" Preparation: save last search, and cursor position.
+	let _s=@/
+	let l = line(".")
+	let c = col(".")
+	" Do the business:
+	execute a:command
+	" Clean up: restore previous search history, and cursor position
+	let @/=_s
+	call cursor(l, c)
 endfunction
