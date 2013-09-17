@@ -1,11 +1,23 @@
 #!/bin/bash
 
 if ${use_color} ; then
-	alias ls='ls --color'
+	alias ls='ls -v --color --group-directories-first'
 	alias grep='grep --color=auto'
 	
 	type -P colordiff >/dev/null && \
 		alias diff=colordiff
+
+	function man() # add color to man pages
+	{
+		env \
+		LESS_TERMCAP_md=$(tput bold; tput setaf 4) \
+		LESS_TERMCAP_me=$(tput sgr0)               \
+		LESS_TERMCAP_us=$(tput smul; tput setaf 5) \
+		LESS_TERMCAP_ue=$(tput rmul; tput sgr0)    \
+		LESS_TERMCAP_so=$(tput smso; tput setaf 7) \
+		LESS_TERMCAP_se=$(tput rmso; tput sgr0)    \
+		GROFF_NO_SGR=1 LANG=C man "$@"
+	}
 fi
 
 alias ..='cd ..'
@@ -14,14 +26,14 @@ alias lr='ls -R'
 alias lt='ls -sh'
 alias ll='ls -lGgh'
 alias l.='ls -d .[a-z,A-Z,0-9]*'
-alias man='LANG=C man'
 
 alias df='df -H'
 alias du='du -sh'
+
+alias vi='vim'
 
 # load machine specific alias file
 if [[ -f $HOME/.alias-$HOSTNAME ]]; then
 	source $HOME/.alias-$HOSTNAME
 fi
 
-# vim: tw=72 ts=4 sts=4 sw=4:
