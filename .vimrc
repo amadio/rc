@@ -14,6 +14,7 @@ set pastetoggle=<F5>
 nmap <leader>p :set paste!<CR>
 nmap <leader>s :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>i :call Preserve("gg=G")<CR>
+nmap <leader>t gqip
 
 " moving between windows
 map <C-h> <C-w>h
@@ -39,7 +40,7 @@ if has("autocmd")
 	autocmd FileType python     setlocal ts=4 sts=4 sw=4 noet
 	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
 	autocmd FileType fortran    setlocal tw=72 ts=8 sts=8 sw=8 noet
-	autocmd FileType tex,latex  setlocal tw=80 ts=2 sts=2 sw=2 et nosi
+	autocmd FileType tex,latex  setlocal tw=100 ts=2 sts=2 sw=2 et nosi
 
 	" automatically remove trailing whitespace for code
 	autocmd BufWritePre *.h,*.c,*.cc,*.cpp,*.py,*.f :%s/\s\+$//e
