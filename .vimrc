@@ -40,7 +40,7 @@ if has("autocmd")
 	autocmd FileType python     setlocal ts=4 sts=4 sw=4 noet
 	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
 	autocmd FileType fortran    setlocal tw=72 ts=8 sts=8 sw=8 noet
-	autocmd FileType tex,latex  setlocal tw=100 ts=2 sts=2 sw=2 et nosi
+	autocmd FileType tex,latex  setlocal tw=100 ts=2 sts=2 sw=2 et nosi noci
 
 	" automatically remove trailing whitespace for code
 	autocmd BufWritePre *.h,*.c,*.cc,*.cpp,*.py,*.f :%s/\s\+$//e
