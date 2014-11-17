@@ -100,6 +100,10 @@ bash_completion='/etc/profile.d/bash-completion.sh'
 [ -f $HOME/.alias ] && source $HOME/.alias
 [ -f $HOME/.alias-$HOSTNAME ] && source $HOME/.alias-$HOSTNAME
 
+# Load keychain agents
+[ -f $HOME/.keychain/$HOSTNAME-sh     ] && source $HOME/.keychain/$HOSTNAME-sh
+[ -f $HOME/.keychain/$HOSTNAME-sh-gpg ] && source $HOME/.keychain/$HOSTNAME-sh-gpg
+
 # Add ~/bin and current directory to PATH
 export PATH=$PATH:~/bin:.
 
