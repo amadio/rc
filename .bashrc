@@ -94,11 +94,12 @@ bash_completion='/etc/profile.d/bash-completion.sh'
 [ -f $bash_completion ] && source $bash_completion
 
 # Load machine-specific configuration files
-[ -f $HOME/.bashrc-$HOSTNAME ] && source $HOME/.bashrc-$HOSTNAME
+SHORTHOST=$(hostname -s)
+[ -f $HOME/.bashrc-$SHORTHOST ] && source $HOME/.bashrc-$SHORTHOST
 
 # Load generic and machine specific alias files
 [ -f $HOME/.alias ] && source $HOME/.alias
-[ -f $HOME/.alias-$HOSTNAME ] && source $HOME/.alias-$HOSTNAME
+[ -f $HOME/.alias-$SHORTHOST ] && source $HOME/.alias-$SHORTHOST
 
 # Load keychain agents
 [ -f $HOME/.keychain/$HOSTNAME-sh     ] && source $HOME/.keychain/$HOSTNAME-sh
