@@ -32,7 +32,7 @@ shopt -s histappend
 HISTCONTROL=ignoreboth:erasedups
 
 # Set history sizes to a more reasonable number
-HISTSIZE=100; HISTFILESIZE=5000; HISTIGNORE='cd:history:ls'
+HISTSIZE=1000; HISTFILESIZE=10000; HISTIGNORE='cd:history:ls'
 
 # Set a history timestamp format so that when we have multiple shells,
 # we don't forget the history of the ones that were closed first.
