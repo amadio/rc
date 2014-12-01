@@ -90,10 +90,6 @@ else
 	PS1='\h \W \$ '
 fi
 
-# Load bash completion modules
-bash_completion='/etc/profile.d/bash-completion.sh'
-[ -f $bash_completion ] && source $bash_completion
-
 # Load machine-specific configuration files
 [ -z $SHORTHOST ] && SHORTHOST=$(hostname -s)
 [ -f $HOME/.bashrc-$SHORTHOST ] && source $HOME/.bashrc-$SHORTHOST
@@ -109,4 +105,4 @@ bash_completion='/etc/profile.d/bash-completion.sh'
 # Add ~/bin and current directory to PATH
 export PATH=$PATH:~/bin:.
 
-unset bash_completion use_color safe_term match_lhs
+unset use_color safe_term match_lhs
