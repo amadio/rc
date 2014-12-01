@@ -2,6 +2,7 @@
 set completion-ignore-case on
 
 Control-g: dump-functions
+Control-x: insert-last-argument
 
 $if mode=vi
 	Control-a: beginning-of-line
