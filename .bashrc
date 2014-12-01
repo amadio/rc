@@ -94,7 +94,7 @@ bash_completion='/etc/profile.d/bash-completion.sh'
 [ -f $bash_completion ] && source $bash_completion
 
 # Load machine-specific configuration files
-SHORTHOST=$(hostname -s)
+[ -z $SHORTHOST ] && SHORTHOST=$(hostname -s)
 [ -f $HOME/.bashrc-$SHORTHOST ] && source $HOME/.bashrc-$SHORTHOST
 
 # Load generic and machine specific alias files
