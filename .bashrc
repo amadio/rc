@@ -101,7 +101,8 @@ bash_completion='/etc/profile.d/bash-completion.sh'
 [ -f $HOME/.alias ] && source $HOME/.alias
 [ -f $HOME/.alias-$SHORTHOST ] && source $HOME/.alias-$SHORTHOST
 
-# Load keychain agents
+# Load keychain
+[ $(type -P keychain) ] && eval $(keychain -q --eval --inherit any-once)
 [ -f $HOME/.keychain/$HOSTNAME-sh     ] && source $HOME/.keychain/$HOSTNAME-sh
 [ -f $HOME/.keychain/$HOSTNAME-sh-gpg ] && source $HOME/.keychain/$HOSTNAME-sh-gpg
 
