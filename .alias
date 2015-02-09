@@ -32,3 +32,6 @@ alias du='du -sh'
 
 alias vi='vim'
 
+function title() {
+	echo -ne "\033]0;$@\007"
+}
