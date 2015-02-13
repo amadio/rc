@@ -43,7 +43,7 @@ HISTTIMEFORMAT='%d/%m/%y %H:%M '
 
 export EDITOR=vim
 
-export LESS="$LESS -F -X"
+export LESS="$LESS -R -F -X"
 type -P lesspipe >/dev/null && export LESSOPEN=${LESSOPEN:-|lesspipe %s}
 
 # Enable Tab- completion in Python when invoked interactively.
