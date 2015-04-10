@@ -1,5 +1,5 @@
 
-set nocp hid bg=dark ai ar aw si is ic sc lz vb t_vb= vi='50,\"10000
+set nocp hid bg=dark ai ar aw si is sc lz vb t_vb= vi='50,\"10000
 set su=~,.bak,.swp,.o,.lo,.la,.aux,.log,.out,.dvi,.ps,.pdf,.blg,.bbl
 set tw=80 ts=8 sts=8 sw=8 noet sbr=… lcs=eol:¬,tab:▸\ ,trail:●,extends:…
 
