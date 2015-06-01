@@ -26,6 +26,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 if has("syntax")
+	syntax on
 	hi NonText    ctermfg=darkgray
 	hi SpecialKey ctermfg=darkgray
 	hi Special term=bold cterm=bold ctermfg=red
