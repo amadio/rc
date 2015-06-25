@@ -39,6 +39,7 @@ if has("autocmd")
 	autocmd FileType make       setlocal ts=8 sts=8 sw=8 noet
 	autocmd FileType c,cpp      setlocal ts=4 sts=4 sw=4 noet
 	autocmd FileType python     setlocal ts=4 sts=4 sw=4 noet
+	autocmd FileType gitcommit  setlocal tw=72 nosi noci
 	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
 	autocmd FileType fortran    setlocal tw=72 ts=8 sts=8 sw=8 et
 	autocmd FileType tex,latex  setlocal tw=80 ts=2 sts=2 sw=2 et nosi lbr
