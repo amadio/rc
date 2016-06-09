@@ -1,0 +1,57 @@
+#!/bin/sh
+
+# JSON Header
+echo '{ "version": 1 }'
+
+echo '[ [],' # send empty array to start
+
+function cpu {
+	CPU1=$(head -n1 /proc/stat | cut -d" " -f6)
+	sleep 1;
+	CPU2=$(head -n1 /proc/stat | cut -d" " -f6)
+    CPU=$(bc -l <<< "scale=0; 100 - ($CPU2-$CPU1)/$(nproc)" | sed -e 's/-//')
+	printf "\uf07d %2d%% " $CPU
+}
+
+function memory {
+    printf " \uf097 $(LC_ALL=C free -h | awk '/Mem/{print $3}') "
+}
+
+function temperature {
+    echo -n " \uf3b6 $(sensors coretemp-isa-0000 | sed -ne '/Physical/{s/^.*:\s*+//; s/\.0//; s/C.*/C/; p;}') "
+}
+
+function battery {
+    [ -f /sys/class/power_supply/BAT1 ] || return
+	local LEVEL=$(< /sys/class/power_supply/BAT1/capacity)
+	local AC="\uf0e7" STATUS="\uf240"
+    [ $LEVEL -lt 80 ] && STATUS="\uf241"
+    [ $LEVEL -lt 50 ] && STATUS="\uf242"
+    [ $LEVEL -lt 20 ] && STATUS="\uf243"
+    [ $LEVEL -lt 10 ] && STATUS="\uf244"
+	grep -q 1 /sys/class/power_supply/ACAD/online && STATUS=$AC
+	echo -ne " ${STATUS} "
+}
+
+function sndcard {
+    local card=$1 ctl=$2 on=$3 off=$4
+    LEVEL=$(amixer -c $card get $ctl | tail -n1) || return
+	fgrep -q '[on]' <<< $LEVEL && echo -n " $on " || printf " $off "
+	echo -n $(egrep -o '[0-9]+%' <<< $LEVEL)
+}
+
+function sound {
+    sndcard PCH Master '\uf0ba' '\uf080'
+    sndcard PCH Headphone '\uf025' '\uf025'
+    sndcard R71 PCM '\uf025'
+}
+
+function full_status () {
+	cpu; temperature; memory; sound; echo -ne "$(date '+%a, %d %b %H:%M')"
+}
+
+while true; do
+	echo -n "[{\"name\":\"time\",\"align\":\"left\",\"full_text\":\"$(full_status)\"}],"
+done
+
+# vim:ts=4:sw=4:et:

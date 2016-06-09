@@ -1,0 +1,219 @@
+
+set $mod Mod4
+
+# Workspace Icons
+
+set $1 1:
+set $2 2:
+set $3 3:
+set $4 4:
+set $5 5:
+set $6 6:
+set $7 7:
+set $8 8:
+set $9 9:
+set $0 10:
+
+# Fonts
+
+font pango: Roboto, Material Icons, github-octicons, FontAwesome 12
+
+# Font Awesome    : http://fontawesome.io
+# GitHub Octicons : https://octicons.github.com
+# Material Icons  : https://design.google.com/icons
+
+# Color Scheme: Material Design Grey
+# https://www.google.com/design/spec/style/color.html
+
+set $color0 #FAFAFA
+set $color1 #F5F5F5
+set $color2 #EEEEEE
+set $color3 #E0E0E0
+set $color4 #BDBDBD
+set $color5 #9E9E9E
+set $color6 #757575
+set $color7 #616161
+set $color8 #424242
+set $color9 #212121
+
+set $fgcolor #FAFAFA
+set $mdcolor #616161
+set $bgcolor #212121
+set $urcolor #F44336
+
+client.focused   $bgcolor $mdcolor $fgcolor $bgcolor
+client.unfocused $bgcolor $bgcolor $mdcolor $bgcolor
+client.focused_inactive $bgcolor $bgcolor $mdcolor $bgcolor
+client.urgent    $bgcolor $urcolor $fgcolor $fgcolor
+client.background $bgcolor
+
+bar {
+	position top
+	# tray_output none
+	wheel_up_cmd nop
+	wheel_down_cmd nop
+	strip_workspace_numbers yes
+	status_command $HOME/.i3/status
+	font pango: Roboto, Material Icons, github-octicons, FontAwesome 10
+	colors {
+		statusline         $fgcolor
+		background         $bgcolor
+		active_workspace   $mdcolor $bgcolor $mdcolor
+		focused_workspace  $bgcolor $bgcolor $fgcolor
+		inactive_workspace $bgcolor $bgcolor $mdcolor
+		urgent_workspace   $bgcolor $bgcolor $urcolor
+	}
+}
+
+# General Keybindings
+
+bindsym $mod+Shift+q exit
+bindsym $mod+Shift+r restart
+
+bindsym XF86MonBrightnessUp    exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown  exec --no-startup-id xbacklight -dec 10
+
+bindsym XF86AudioRaiseVolume   exec --no-startup-id amixer -c PCH set Master 5%+
+bindsym XF86AudioLowerVolume   exec --no-startup-id amixer -c PCH set Master 5%-
+bindsym XF86AudioMute          exec --no-startup-id amixer -c PCH set Master toggle
+
+bindsym $mod+Shift+plus        exec --no-startup-id amixer -c R71 set PCM 5%+
+bindsym $mod+Shift+minus       exec --no-startup-id amixer -c R71 set PCM 5%-
+bindsym $mod+Shift+m           exec --no-startup-id amixer -c R71 set PCM toggle
+
+bindsym XF86Sleep exec --no-startup-id i3lock & (sleep 1 && xset dpms force off)
+bindsym $mod+XF86Sleep exec --no-startup-id xset dpms force off
+
+bindsym --release Print exec --no-startup-id import $HOME/screenshot.png
+
+set $dmenu i3-dmenu-desktop --entry-type=command --dmenu='dmenu -i -fn Roboto-12 -nb grey15'
+bindsym $mod+Menu exec --no-startup-id $dmenu
+
+# Default Programs
+
+set $term     xterm
+set $browser  google-chrome-stable
+
+bindsym $mod+Return  exec --no-startup-id $term
+bindsym $mod+Shift+c exec --no-startup-id $browser
+
+# Focus
+
+focus_follows_mouse no
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+c move absolute position center
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+p focus parent
+bindsym $mod+o focus child
+bindsym $mod+i exec i3-input
+bindsym $mod+Escape focus mode_toggle
+bindsym $mod+q kill
+
+# Layout
+
+new_float pixel 1
+new_window pixel 1
+
+bindsym $mod+g split h
+bindsym $mod+v split v
+bindsym $mod+e layout toggle split
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout stacking
+bindsym $mod+Shift+f fullscreen
+bindsym $mod+w layout toggle all
+bindsym $mod+b border toggle
+bindsym $mod+Shift+b border pixel 4
+bindsym $mod+n bar mode invisible
+bindsym $mod+m bar mode dock
+
+# Floating
+
+floating_modifier $mod
+bindsym $mod+f floating toggle
+
+# Scratch Pad
+
+bindsym $mod+Tab scratchpad show
+bindsym $mod+Shift+Tab move scratchpad
+
+# Workspaces
+
+bindsym $mod+1 workspace $1
+bindsym $mod+2 workspace $2
+bindsym $mod+3 workspace $3
+bindsym $mod+4 workspace $4
+bindsym $mod+5 workspace $5
+bindsym $mod+6 workspace $6
+bindsym $mod+7 workspace $7
+bindsym $mod+8 workspace $8
+bindsym $mod+9 workspace $9
+bindsym $mod+0 workspace $0
+
+bindsym $mod+minus workspace prev
+bindsym $mod+equal workspace next
+workspace_auto_back_and_forth yes
+bindsym $mod+BackSpace workspace back_and_forth
+
+bindsym XF86AudioPrev workspace prev
+bindsym XF86AudioNext workspace next
+bindsym XF86AudioPlay workspace back_and_forth
+
+bindsym $mod+Shift+1 move container to workspace $1
+bindsym $mod+Shift+2 move container to workspace $2
+bindsym $mod+Shift+3 move container to workspace $3
+bindsym $mod+Shift+4 move container to workspace $4
+bindsym $mod+Shift+5 move container to workspace $5
+bindsym $mod+Shift+6 move container to workspace $6
+bindsym $mod+Shift+7 move container to workspace $7
+bindsym $mod+Shift+8 move container to workspace $8
+bindsym $mod+Shift+9 move container to workspace $9
+bindsym $mod+Shift+0 move container to workspace $0
+
+# Multiple Screens
+
+bindsym $mod+Shift+e move workspace to output eDP1
+bindsym $mod+Shift+d move workspace to output HDMI1
+
+# Resize Mode
+
+bindsym $mod+r mode ""
+
+mode "" {
+	bindsym q mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym h resize shrink width  5 px or 1 ppt
+	bindsym j resize grow   height 5 px or 1 ppt
+	bindsym k resize shrink height 5 px or 1 ppt
+	bindsym l resize grow   width  5 px or 1 ppt
+}
+
+# Window Rules
+
+for_window [window_role="pop-up"] floating enable
+
+assign [title="Google Chrome"] → $1
+for_window [title="Google Chrome"] border none
+
+assign [class="VidyoDesktop"] → 
+for_window [class="VidyoDesktop"] floating enable
+
+assign [class="Amplxe-gui"] → $7
+
+for_window [class="Gucharmap"] floating enable
+for_window [class="Paraview"] floating enable
+for_window [class="Xboard"] floating enable
+for_window [title="Gnuplot"] floating enable
+for_window [title="ImageMagick"] floating enable
+for_window [title="Miniplayer"] floating enable
+for_window [title="MPlayer"] floating enable
+
+# docs: http://i3wm.org/docs/userguide.html
+
+# vim:ts=4 sts=4 sw=4:
