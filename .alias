@@ -35,3 +35,15 @@ alias vi='vim'
 function title() {
 	echo -ne "\033]0;$@\007"
 }
+
+function email() {
+	local mbox name
+	case $1 in
+		cern)   name='CERN';   mbox='imaps://imap.cern.ch' ;;
+		gmail)  name='GMail';  mbox='imaps://imap.gmail.com' ;;
+		unesp)  name='SPRACE'; mbox='imaps://mail.ncc.unesp.br' ;;
+		gentoo) name='Gentoo'; mbox='imaps://dev.gentoo.org' ;;
+	esac
+	unset PROMPT_COMMAND; title ${name}
+	[ -v mbox ] && mutt -f $mbox || mutt
+}
