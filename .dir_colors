@@ -224,6 +224,7 @@ EXEC 01;32
 # programming
 .c 00;33
 .cc 00;33
+.cu 00;33
 .cpp 00;33
 .c++ 00;33
 .cxx 00;33
