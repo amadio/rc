@@ -90,19 +90,24 @@ else
 	PS1='\h \W \$ '
 fi
 
+# Load system files
+for sh in /etc/bash/bashrc.d/* ; do
+       [[ -r ${sh} ]] && source "${sh}"
+done
+
 # Load machine-specific configuration files
 [ -z $SHORTHOST ] && SHORTHOST=$(hostname -s)
-[ -f $HOME/.bashrc-$SHORTHOST ] && source $HOME/.bashrc-$SHORTHOST
+[ -r $HOME/.bashrc-$SHORTHOST ] && source $HOME/.bashrc-$SHORTHOST
 
 # Load generic and machine specific alias files
-[ -f $HOME/.alias ] && source $HOME/.alias
-[ -f $HOME/.alias-$SHORTHOST ] && source $HOME/.alias-$SHORTHOST
+[ -r $HOME/.alias ] && source $HOME/.alias
+[ -r $HOME/.alias-$SHORTHOST ] && source $HOME/.alias-$SHORTHOST
 
 # Load keychain
-[ -f $HOME/.keychain/$HOSTNAME-sh     ] && source $HOME/.keychain/$HOSTNAME-sh
-[ -f $HOME/.keychain/$HOSTNAME-sh-gpg ] && source $HOME/.keychain/$HOSTNAME-sh-gpg
+[ -r $HOME/.keychain/$HOSTNAME-sh     ] && source $HOME/.keychain/$HOSTNAME-sh
+[ -r $HOME/.keychain/$HOSTNAME-sh-gpg ] && source $HOME/.keychain/$HOSTNAME-sh-gpg
 
 # Add ~/bin and current directory to PATH
 export PATH=$PATH:~/bin:.
 
-unset use_color safe_term match_lhs
+unset sh use_color safe_term match_lhs
