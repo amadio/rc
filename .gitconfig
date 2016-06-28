@@ -1,0 +1,46 @@
+[user]
+	name = Guilherme Amadio
+
+[github]
+	user = amadio
+
+[core]
+	excludesfile = ~/.gitignore
+	whitespace = trailing-space
+
+[alias]
+	unstage = reset HEAD --
+
+[http]
+	cookiefile = /home/amadio/.gitcookies
+
+[color]
+	ui = true
+
+[color "diff"]
+	old = red bold
+	new = green bold
+	meta = cyan bold
+	frag = yellow bold
+	func = blue bold
+	whitespace = red reverse
+
+[diff]
+	algorithm = patience
+
+[merge]
+	tool = vimdiff
+
+[pull]
+	ff = only
+	rebase = preserve
+
+[push]
+	default = current
+
+[log]
+	decorate = true
+
+[pager]
+	diff = diff-highlight | less
+	show = diff-highlight | less
