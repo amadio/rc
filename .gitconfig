@@ -11,6 +11,7 @@
 
 [alias]
 	unstage = reset HEAD --
+	full-log = log --all --decorate --graph --oneline
 
 [http]
 	cookiefile = /home/amadio/.gitcookies
@@ -38,9 +39,6 @@
 
 [push]
 	default = current
-
-[log]
-	decorate = true
 
 [pager]
 	diff = diff-highlight | less
