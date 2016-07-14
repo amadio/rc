@@ -1,6 +1,7 @@
 [user]
 	name = Guilherme Amadio
 	email = guilherme.amadio@gmail.com
+	signingkey = 0x163f3352a3b4f9fb
 
 [github]
 	user = amadio
@@ -26,6 +27,9 @@
 	frag = yellow bold
 	func = blue bold
 	whitespace = red reverse
+
+[commit]
+	gpgsign = true
 
 [diff]
 	algorithm = patience
