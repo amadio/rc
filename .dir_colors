@@ -161,17 +161,17 @@ EXEC 01;32
 .emf 01;35
 
 # text/document files
-.cfg 00;37
-.conf 00;37
-.diff 00;37
-.doc 00;37
-.ini 00;37
-.log 00;37
-.patch 00;37
-.pdf 00;37
-.ps 00;37
-.tex 00;37
-.txt 00;37
+.cfg 01;38
+.conf 01;38
+.diff 01;38
+.doc 01;38
+.ini 01;38
+.log 01;38
+.patch 01;38
+.pdf 01;38
+.ps 01;38
+.tex 01;38
+.txt 01;38
 
 # audio formats
 .aac 00;36
