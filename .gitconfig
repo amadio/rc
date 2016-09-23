@@ -35,8 +35,15 @@
 [diff]
 	algorithm = patience
 
+[fetch]
+	prune = true
+
 [merge]
 	tool = vimdiff
+
+[pager]
+	diff = diff-highlight | less
+	show = diff-highlight | less
 
 [pull]
 	ff = only
@@ -45,6 +52,6 @@
 [push]
 	default = current
 
-[pager]
-	diff = diff-highlight | less
-	show = diff-highlight | less
+[rebase]
+	autoSquash = true
+	autoStash = true
