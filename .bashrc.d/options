@@ -1,0 +1,7 @@
+# vim:syntax=sh:
+
+set -o vi
+
+shopt -s checkwinsize
+shopt -s no_empty_cmd_completion
+

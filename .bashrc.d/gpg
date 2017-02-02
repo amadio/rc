@@ -1,0 +1,4 @@
+# vim:syntax=sh:
+
+export GPG_TTY=$(tty)
+

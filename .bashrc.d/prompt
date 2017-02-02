@@ -1,0 +1,24 @@
+# vim:syntax=sh:
+
+case ${TERM} in
+        [aEkx]term*|rxvt*|gnome*|konsole*|interix)
+                PS1='\[\033]0;\u@\h:\w\007\]'
+                ;;
+        screen*)
+                PS1='\[\033k\u@\h:\w\033\\\]'
+                ;;
+        *)
+                unset PS1
+                ;;
+esac
+
+if use_color ; then
+	if [[ ${EUID} == 0 ]] ; then
+		PS1+='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+	else
+		PS1+='\[\033[01;32m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+	fi
+else
+	PS1+='\h \W \$ '
+fi
+

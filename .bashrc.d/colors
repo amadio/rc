@@ -1,0 +1,39 @@
+# vim:syntax=sh:
+
+function use_color() {
+	case ${TERM} in
+	*color|[aEkx]term*|gnome*|rxvt*|screen) return 0;;
+	esac
+	return 1
+}
+
+use_color || return
+
+alias ls='ls --color'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+type -P colordiff >/dev/null && alias diff=colordiff
+
+function man() # add color to man pages
+{
+	env GROFF_NO_SGR=1 LANG=C                  \
+	LESS_TERMCAP_md=$(tput bold; tput setaf 4) \
+	LESS_TERMCAP_me=$(tput sgr0)               \
+	LESS_TERMCAP_so=$(tput smso; tput setaf 7) \
+	LESS_TERMCAP_se=$(tput rmso; tput sgr0)    \
+	LESS_TERMCAP_us=$(tput smul; tput setaf 5) \
+	LESS_TERMCAP_ue=$(tput rmul; tput sgr0)    \
+	man "$@"
+}
+
+if type -P dircolors >/dev/null ; then
+	unset LS_COLORS
+	if [[ -f ~/.dir_colors ]] ; then
+		eval $(dircolors --sh <(dircolors -p; cat ~/.dir_colors))
+	else
+		eval $(dircolors --sh)
+	fi
+fi
+

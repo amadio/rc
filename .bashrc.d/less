@@ -1,0 +1,9 @@
+# vim:syntax=sh:
+
+export LESS="--shift 3 -FMRX"
+
+if type -P pygmentize >/dev/null ; then
+	export LESSCOLOR=always
+	export LESSCOLORIZER="pygmentize -O bg=dark"
+fi
+

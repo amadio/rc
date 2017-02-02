@@ -1,0 +1,5 @@
+# vim:syntax=sh:
+
+# tab-completion for python
+export PYTHONSTARTUP=$HOME/.pythonrc
+

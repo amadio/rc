@@ -1,0 +1,14 @@
+# vim:syntax=sh:
+
+scripts=(
+	parallel_studio_xe*/psxevars.sh
+	compiler_and_libraries/linux/bin/compilervars.sh
+	vtune_amplifier_xe/amplxe-vars.sh
+)
+
+for script in ${scripts[@]} ; do
+	for sh in /opt/intel/${script} ; do
+		[[ -r ${sh} ]] && source ${sh} intel64 >/dev/null
+	done
+done
+

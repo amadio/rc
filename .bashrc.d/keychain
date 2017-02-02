@@ -1,0 +1,5 @@
+# vim:syntax=sh:
+
+type -P keychain >/dev/null && \
+eval $(keychain -q --eval --agents ssh,gpg --inherit any-once)
+

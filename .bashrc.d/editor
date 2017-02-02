@@ -1,0 +1,4 @@
+# vim:syntax=sh:
+
+type -P vim >/dev/null && alias vi=vim && export EDITOR=vim
+

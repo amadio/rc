@@ -1,0 +1,10 @@
+# vim:syntax=sh:
+
+shopt -s histappend
+
+HISTSIZE=100000
+HISTFILESIZE=1000000
+HISTTIMEFORMAT='%F %T '
+HISTIGNORE='cd:ls:bg:fg:su'
+HISTCONTROL='ignoreboth:erasedups'
+
