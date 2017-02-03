@@ -2,7 +2,7 @@
 
 function use_color() {
 	case ${TERM} in
-	*color|[aEkx]term*|gnome*|rxvt*|screen) return 0;;
+	*color|[aEkx]term*|linux|gnome*|rxvt*|screen) return 0;;
 	esac
 	return 1
 }

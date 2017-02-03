@@ -1,7 +1,7 @@
 # vim:syntax=sh:
 
 case ${TERM} in
-        [aEkx]term*|rxvt*|gnome*|konsole*|interix)
+        [aEkx]term*|rxvt*|gnome*|linux)
                 PS1='\[\033]0;\u@\h:\w\007\]'
                 ;;
         screen*)
