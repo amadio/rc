@@ -55,3 +55,6 @@
 [rebase]
 	autoSquash = true
 	autoStash = true
+[status]
+	short = true
+	branch = true
