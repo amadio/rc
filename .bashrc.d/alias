@@ -1,5 +1,6 @@
 # vim:syntax=sh:
 
+alias ..='cd ..'
 alias df='df -H'
 alias du='du -chs'
 
