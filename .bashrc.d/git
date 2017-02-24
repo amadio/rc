@@ -1,0 +1,10 @@
+# vim:syntax=sh:
+
+# download diff-highlight if not found
+if ! type -P diff-highlight >/dev/null ; then
+	if type -P wget >/dev/null ; then
+		[ -d ~/bin ] || mkdir ~/bin
+		wget -qO ~/bin/diff-highlight https://goo.gl/oCLYPs
+		chmod +x ~/bin/diff-highlight
+	fi
+fi
