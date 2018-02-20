@@ -1,0 +1,4 @@
+# vim:syntax=sh:
+
+export KRB5_CONFIG="~/.krb5.conf"
+
