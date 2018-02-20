@@ -47,9 +47,6 @@ if has("autocmd")
 
 	autocmd BufRead  /tmp/mutt-* set tw=72 noci nosi
 	autocmd BufReadPre *.tex set syntax=latex
-
-	" automatically remove trailing whitespace for code
-	autocmd BufWritePre *.h,*.c,*.cc,*.cpp,*.py,*.f,*.tex :%s/\s\+$//e
 endif
 
 function! Preserve(command)
