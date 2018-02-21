@@ -16,7 +16,7 @@ set $0 10:
 
 # Fonts
 
-font pango: Roboto, Material Icons, github-octicons, FontAwesome 12
+font pango: Roboto, FontAwesome 12, Material Icons, github-octicons
 
 # Font Awesome    : http://fontawesome.io
 # GitHub Octicons : https://octicons.github.com
