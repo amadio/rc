@@ -1,0 +1,4 @@
+# vim:syntax=sh:
+
+[[ -r /usr/lib/ccache/bin ]] && export PATH="/usr/lib/ccache/bin:${PATH}"
+
