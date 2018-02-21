@@ -35,18 +35,22 @@ if has("syntax")
 endif
 
 if has("autocmd")
-	autocmd FileType html,css   setlocal ts=2 sts=2 sw=2 et
-	autocmd FileType make       setlocal ts=8 sts=8 sw=8 noet
-	autocmd FileType cmake      setlocal ts=2 sts=2 sw=2 et
-	autocmd FileType c,cpp      setlocal ts=2 sts=2 sw=2 et
-	autocmd FileType python     setlocal ts=4 sts=4 sw=4 noet
-	autocmd FileType gitcommit  setlocal tw=72 nosi noci
-	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
-	autocmd FileType fortran    setlocal tw=72 ts=8 sts=8 sw=8 et
-	autocmd FileType tex,latex  setlocal tw=72 ts=2 sts=2 sw=2 et nosi lbr
+	autocmd BufRead,BufNewFile *.c,*.h set filetype=c
+	autocmd BufRead,BufNewFile *.cl set filetype=opencl
 
-	autocmd BufRead  /tmp/mutt-* set tw=72 noci nosi
-	autocmd BufReadPre *.tex set syntax=latex
+	autocmd FileType c       setlocal tw=80 ts=8 sts=8 sw=8 et
+	autocmd FileType cpp     setlocal tw=99 ts=4 sts=4 sw=4 et
+	autocmd FileType fortran setlocal tw=80 ts=4 sts=4 sw=4 et
+	autocmd FileType python  setlocal tw=80 ts=4 sts=4 sw=4 et
+
+	autocmd FileType cmake   setlocal tw=99 ts=4 sts=4 sw=4 et
+	autocmd FileType make    setlocal tw=80 ts=8 sts=8 sw=8 noet
+
+	autocmd BufRead,BufNewFile *.tex set filetype=latex
+	autocmd FileType tex,latex setlocal tw=72 ts=2 sts=2 sw=2 et nosi noci lbr
+	autocmd FileType gitcommit setlocal tw=72 ts=2 sts=2 sw=2 et nosi noci lbr
+
+	autocmd BufRead  /tmp/mutt-* set tw=72 ts=4 sts=4 sw=4 et noci nosi lbr
 endif
 
 function! Preserve(command)
