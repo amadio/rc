@@ -1,4 +1,9 @@
 # vim:syntax=sh:
 
-[[ -r /usr/lib/ccache/bin ]] && export PATH="/usr/lib/ccache/bin:${PATH}"
+CCACHE_BINDIR="${SHELL%/bin/$(basename ${SHELL})}/usr/lib/ccache/bin"
 
+if [[ -r ${CCACHE_BINDIR} && $PATH != ${CCACHE_BINDIR}:* ]]; then
+	export PATH="${CCACHE_BINDIR}:${PATH}"
+fi
+
+unset CCACHE_BINDIR
