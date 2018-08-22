@@ -214,7 +214,6 @@ for_window [title="Gnuplot"] floating enable
 for_window [title="ImageMagick"] floating enable
 for_window [title="Miniplayer"] floating enable
 for_window [title="MPlayer"] floating enable
-for_window [title="ROOT"] floating enable
 for_window [title="Figure"] floating enable
 
 # docs: http://i3wm.org/docs/userguide.html
