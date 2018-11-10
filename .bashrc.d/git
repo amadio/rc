@@ -4,7 +4,9 @@
 if ! type -P diff-highlight >/dev/null ; then
 	if type -P wget >/dev/null ; then
 		[ -d ~/bin ] || mkdir ~/bin
-		wget -qO ~/bin/diff-highlight https://goo.gl/oCLYPs
+		REPO="https://raw.githubusercontent.com/git/git"
+		FILE="v2.13.2/contrib/diff-highlight/diff-highlight"
+		wget -qO ~/bin/diff-highlight $REPO/$FILE
 		chmod +x ~/bin/diff-highlight
 	fi
 fi
