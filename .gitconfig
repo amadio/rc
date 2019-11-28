@@ -15,6 +15,7 @@
 	unstage = reset HEAD --
 	full-log = log --all --decorate --graph --oneline
 	sync = fetch --all -t -p
+	fixup = commit --amend --no-edit
 
 [http]
 	cookiefile = /home/amadio/.gitcookies
