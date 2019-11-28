@@ -3,6 +3,7 @@
 alias ..='cd ..'
 alias df='df -H'
 alias du='du -chs'
+alias display='display -geometry +0+0'
 
 # prefer time binary to shell function
 type -P time >/dev/null && alias time="$(type -P time) -f %e"
