@@ -19,6 +19,7 @@
 
 [http]
 	cookiefile = /home/amadio/.gitcookies
+	emptyAuth = true
 
 [color]
 	ui = true
