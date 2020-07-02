@@ -196,6 +196,10 @@ mode "" {
 
 # Window Rules
 
+default_border pixel
+default_floating_border normal
+
+no_focus [window_role="pop-up"]
 for_window [window_role="pop-up"] floating enable
 
 assign [title="Google Chrome"] → $1
