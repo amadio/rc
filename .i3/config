@@ -208,6 +208,8 @@ for_window [title="Google Chrome"] floating disable
 
 assign [class="VidyoDesktop"] → 
 for_window [class="VidyoDesktop"] floating enable
+assign [class="zoom"] → 
+for_window [class="zoom"] floating enable
 
 assign [class="Amplxe-gui"] → $7
 
