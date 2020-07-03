@@ -40,6 +40,7 @@ if has("autocmd")
 
 	autocmd FileType c       setlocal tw=80 ts=8 sts=8 sw=8 et
 	autocmd FileType cpp     setlocal tw=99 ts=4 sts=4 sw=4 et
+	autocmd FileType cuda    setlocal tw=99 ts=4 sts=4 sw=4 et
 	autocmd FileType fortran setlocal tw=80 ts=4 sts=4 sw=4 et
 	autocmd FileType python  setlocal tw=80 ts=4 sts=4 sw=4 et
 
