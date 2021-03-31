@@ -8,3 +8,4 @@ alias display='display -geometry +0+0'
 # prefer time binary to shell function
 type -P time >/dev/null && alias time="$(type -P time) -f %e"
 
+function edit() { $EDITOR $(find $PWD -type f -name $@); }
