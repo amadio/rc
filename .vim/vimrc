@@ -37,10 +37,11 @@ endif
 if has("autocmd")
 	autocmd BufRead,BufNewFile *.c,*.h set filetype=c
 	autocmd BufRead,BufNewFile *.cl set filetype=opencl
+	autocmd BufRead,BufNewFile *.icc set filetype=cpp
 
-	autocmd FileType c       setlocal tw=80 ts=8 sts=8 sw=8 et
-	autocmd FileType cpp     setlocal tw=99 ts=4 sts=4 sw=4 et
-	autocmd FileType cuda    setlocal tw=99 ts=4 sts=4 sw=4 et
+	autocmd FileType c       setlocal tw=80 ts=8 sts=8 sw=8 noet
+	autocmd FileType cpp     setlocal tw=99 ts=8 sts=8 sw=8 noet
+	autocmd FileType cuda    setlocal tw=99 ts=8 sts=8 sw=8 noet
 	autocmd FileType fortran setlocal tw=80 ts=4 sts=4 sw=4 et
 	autocmd FileType python  setlocal tw=80 ts=4 sts=4 sw=4 et
 
