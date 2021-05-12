@@ -1,4 +1,6 @@
 # vim:syntax=sh:
 
-[[ $(id -u) -ne 0 ]] && export KRB5_CONFIG="~/.krb5.conf"
+export KRB5_CONFIG="~/.krb5.conf"
+
+[[ $(id -u) -eq 0 ]] && unset KRB5_CONFIG
 
