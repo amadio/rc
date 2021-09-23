@@ -203,25 +203,20 @@ default_floating_border normal
 no_focus [window_role="pop-up"]
 for_window [window_role="pop-up"] floating enable
 
-assign [title="Google Chrome"] → $1
-for_window [title="Google Chrome"] border none
-for_window [title="Google Chrome"] floating disable
+assign [class="google-chrome"] → $1
+for_window [class="google-chrome"] border none
+for_window [class="google-chrome"] floating disable
 
-assign [class="VidyoDesktop"] → 
-for_window [class="VidyoDesktop"] floating enable
-assign [class="zoom"] → 
+assign [class="zoom"] → $6
 for_window [class="zoom"] floating enable
-
-assign [class="Amplxe-gui"] → $7
 
 for_window [class="Gucharmap"] floating enable
 for_window [class="Paraview"] floating enable
-for_window [class="Xboard"] floating enable
 for_window [title="Gnuplot"] floating enable
 for_window [title="ImageMagick"] floating enable
-for_window [title="Miniplayer"] floating enable
-for_window [title="MPlayer"] floating enable
-for_window [title="Figure"] floating enable
+
+assign [class="slack"]→ $5
+assign [class="mattermost"]→ $5
 
 # docs: http://i3wm.org/docs/userguide.html
 
