@@ -10,15 +10,17 @@ function cpu {
 	sleep 1;
 	CPU2=$(head -n1 /proc/stat | cut -d" " -f6)
     CPU=$(bc -l <<< "scale=0; 100 - ($CPU2-$CPU1)/$(nproc)" | sed -e 's/-//')
-	printf "\uf07d %2d%% " $CPU
+	printf "%2d%% " $CPU
 }
 
 function memory {
-    printf " \uf0ae $(LC_ALL=C free -h --si | awk '/Mem/{print $3}') "
+    printf " $(LC_ALL=C free -h --si | awk '/Mem/{print $3}') "
 }
 
 function temperature {
-    echo -n " \uf3b6 $(sensors coretemp-isa-0000 | sed -ne '/Physical/{s/^.*:\s*+//; s/\.0//; s/C.*/C/; p;}') "
+    TEMP=$(sensors k10temp-pci-00c3 | sed -ne '/Tdie/{s/.*: //;p;q}')
+    ITEMP=${TEMP/.*/}
+    printf " %s" ${TEMP/+/}
 }
 
 function battery {
@@ -41,9 +43,9 @@ function sndcard {
 }
 
 function sound {
-    sndcard PCH Master '\uf0ba' '\uf080'
-    sndcard PCH Headphone '\uf025' '\uf025'
-    sndcard R71 PCM '\uf025'
+    sndcard Generic Master '\ue050' '\ue050'
+    sndcard Generic Headphone '\ue023' '\ue023'
+    sndcard R71 PCM '\ue311' '\ue310'
 }
 
 function full_status () {
