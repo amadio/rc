@@ -208,6 +208,7 @@ for_window [class="google-chrome"] border none
 for_window [class="google-chrome"] floating disable
 
 assign [class="zoom"] → $6
+assign [title="Zoom"] → $6
 for_window [class="zoom"] floating enable
 
 for_window [class="Gucharmap"] floating enable
