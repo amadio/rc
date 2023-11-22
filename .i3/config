@@ -50,8 +50,8 @@ client.background $bgcolor
 bar {
 	position top
 	# tray_output none
-	wheel_up_cmd nop
-	wheel_down_cmd nop
+	bindsym button4 nop
+	bindsym button5 nop
 	strip_workspace_numbers yes
 	status_command $HOME/.i3/status
 	font pango: Roboto, Material Icons, github-octicons, FontAwesome 10
