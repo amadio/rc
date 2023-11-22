@@ -203,9 +203,9 @@ default_floating_border normal
 no_focus [window_role="pop-up"]
 for_window [window_role="pop-up"] floating enable
 
-assign [class="google-chrome"] → $1
-for_window [class="google-chrome"] border none
-for_window [class="google-chrome"] floating disable
+assign [class="Google-chrome"] → $1
+for_window [class="Google-chrome"] border none
+for_window [class="Google-chrome"] floating disable
 
 assign [class="zoom"] → $6
 assign [title="Zoom"] → $6
