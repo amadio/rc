@@ -45,7 +45,7 @@ function sndcard {
 function sound {
     sndcard Generic Master '\ue050' '\ue050'
     sndcard Generic Headphone '\ue023' '\ue023'
-    sndcard R71 PCM '\ue311' '\ue310'
+    sndcard SE Speaker '\ue311' '\ue310'
 }
 
 function full_status () {
