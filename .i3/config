@@ -118,9 +118,6 @@ bindsym $mod+q kill
 
 # Layout
 
-new_float pixel 1
-new_window pixel 1
-
 bindsym $mod+g split h
 bindsym $mod+v split v
 bindsym $mod+e layout toggle split
@@ -129,7 +126,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+Shift+f fullscreen
 bindsym $mod+w layout toggle all
 bindsym $mod+b border toggle
-bindsym $mod+Shift+b border pixel 4
+bindsym $mod+Shift+b border pixel
 bindsym $mod+n bar mode invisible
 bindsym $mod+m bar mode dock
 
@@ -199,6 +196,9 @@ mode "" {
 
 default_border pixel
 default_floating_border normal
+
+for_window [all] title_window_icon padding 3
+for_window [all] title_format "<b>%title</b>"
 
 no_focus [window_role="pop-up"]
 for_window [window_role="pop-up"] floating enable
