@@ -16,7 +16,7 @@ set $0 10:#
 
 # Fonts
 
-font pango: Roboto, Material Icons, github-octicons 10
+font pango: NotoSans, Material Icons, github-octicons 14
 
 # Font Awesome    : http://fontawesome.io
 # GitHub Octicons : https://octicons.github.com
@@ -54,7 +54,7 @@ bar {
 	bindsym button5 nop
 	strip_workspace_numbers yes
 	status_command $HOME/.i3/status
-	font pango: Roboto, Material Icons, github-octicons, FontAwesome 10
+	font pango: NotoSans, Material Icons, github-octicons, FontAwesome 14
 	colors {
 		statusline         $fgcolor
 		background         $bgcolor
