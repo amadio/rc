@@ -6,16 +6,33 @@
 [github]
 	user = amadio
 
+[sendemail]
+	confirm = auto
+	sendmailCmd = /usr/bin/msmtp
+	suppresscc = self
+
 [core]
 	excludesfile = ~/.gitignore
 	whitespace = trailing-space
 	autocrlf = input
 
+[commit]
+	gpgsign = true
+
+[format]
+	signOff = yes
+
+[tag]
+	sort = v:refname
+
+[log]
+	decorate = true
+
 [alias]
 	unstage = reset HEAD --
 	fixup = commit --amend --no-edit
+	lg = log --oneline
 	full-log = log --all --decorate --graph --oneline
-	qlog = log --oneline
 	sync = fetch --all --prune --tags
 
 [http]
@@ -33,8 +50,9 @@
 	func = blue bold
 	whitespace = red reverse
 
-[commit]
-	gpgsign = true
+[status]
+	short = true
+	branch = true
 
 [diff]
 	algorithm = patience
@@ -59,9 +77,6 @@
 [rebase]
 	autoSquash = true
 	autoStash = true
-[status]
-	short = true
-	branch = true
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
