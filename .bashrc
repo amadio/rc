@@ -6,5 +6,5 @@ for sh in /etc/{,bash/}bashrc ~/.bashrc.d/* ; do
        [[ -r ${sh} ]] && source "${sh}"
 done
 
-export PATH="${PATH}:${HOME}/bin:."
+export PATH="${PATH}:${HOME}/bin:${HOME}/.local/bin:."
 
